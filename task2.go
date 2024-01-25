@@ -2,25 +2,45 @@ package main
 
 import (
 	"fmt"
+	"math"
+	"math/rand"
+	"strings"
 )
 
+func proccess(teks string, characters string){ // logic pass
+	data1 := strings.Split(teks, "") //  [a b c]
 
-func MainData(n int) string{
-	nilai := []int{1, 7, 3, 4, 8, 9}
+	output := []string{"", "", "", ""}
 
-	temp := 0
+	for i, v := range data1 {
+		random := rand.Float32()
+		bulat := math.Round(float64(random))
+		// fmt.Println(bulat)
+		if bulat == 1 {
+			temp := strings.ToUpper(v)
+			output[i] = temp
+		} else {
+			temp := strings.ToLower(v)
+			output[i] = temp
+		}
+	}
 	
-	for _, data1 := range nilai {
-		// fmt.Println(n)
-		for _, data2 := range nilai {
-			temp = data1 + data2
+	gabung := strings.Join(output, "")
+	fmt.Println(gabung + characters) // output
+}
 
-			if temp == n {
-				hasil := fmt.Sprintf("%v dan %v", data1, data2)
-				return hasil
-			}
+func GenPass(pass string, level string){
+	specialCharacters := "@:;#&-?/%+*"
+	special := strings.Split(specialCharacters, "") // [@ : ; # & - ? / % + *]
+	panjang := len(special)
+	getspesial := rand.Intn(panjang)
+	char := ""
+
+	for i, v := range special{
+		if i == getspesial {
+			char = v
 		}
 	}
 
-	return fmt.Sprintln("Not Found!")
+	proccess(pass, char)
 }
