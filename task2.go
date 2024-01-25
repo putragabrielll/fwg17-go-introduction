@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func proccess(teks string, characters string, angka string){ // logic pass
+func proccess(teks string, characters string, angka string) string{ // logic pass
 	data1 := strings.Split(teks, "") //  [a b c]
 
 	output := []string{"", "", "", ""}
@@ -26,10 +26,10 @@ func proccess(teks string, characters string, angka string){ // logic pass
 	}
 	
 	gabung := strings.Join(output, "")
-	fmt.Println(gabung + characters + angka) // output
+	return (gabung + characters + angka) // output
 }
 
-func GenPass(pass string, level string){
+func GenPass(pass string, level string) string{
 	random := rand.Perm(9)
 	angka := 3
 	if level == "medium" {
@@ -51,6 +51,6 @@ func GenPass(pass string, level string){
 			char = v
 		}
 	}
-
-	proccess(pass, char, outputAngka)
+	
+	return proccess(pass, char, outputAngka)
 }
