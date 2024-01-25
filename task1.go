@@ -4,10 +4,10 @@ import "fmt"
 
 func printSegitiga(angka int) { // 5
 	var p int = 1
-	for initial := 1; initial <= angka; initial++ {
-		if initial != 1 {
+	for x := 1; x <= angka; x++ {
+		if x != 1 {
 			// cara 1
-			// for i := 1; i <= angka-(angka - initial + 1); i++ {
+			// for i := 1; i <= angka-(angka - x + 1); i++ {
 			// 	fmt.Print("  ")
 			// }
 
@@ -23,10 +23,10 @@ func printSegitiga(angka int) { // 5
 		// 	fmt.Print(("  "))
 		// }
 
-		for i := 1; i <= angka - initial + 1; i++ {
+		for i := 1; i <= angka - x + 1; i++ {
 			fmt.Print("* ")	
 		}
-		for j := 1; j <= angka - initial; j++ {
+		for j := 1; j <= angka - x; j++ {
 			fmt.Print("* ")
 		}
 		
