@@ -10,7 +10,7 @@ import (
 func proccess(teks string, characters string, angka string) string{ // logic pass
 	data1 := strings.Split(teks, "") //  [a b c]
 
-	output := []string{"", "", "", ""}
+	output := []string{"", "", "", "", "", "", ""}
 
 	for i, v := range data1 {
 		random := rand.Float32()
@@ -30,7 +30,12 @@ func proccess(teks string, characters string, angka string) string{ // logic pas
 }
 
 func GenPass(pass string, level string) string{
-	random := rand.Perm(9)
+	if len(pass) <= 5 {
+		return "Password Not Strong!"
+	} else if len(pass) > 7 {
+		return "Password Over load...\nPassword must be 6 - 7 characters !"
+	}
+	random := rand.Perm(9) // mencari random angka
 	angka := 3
 	if level == "medium" {
 		angka = 4
@@ -40,7 +45,7 @@ func GenPass(pass string, level string) string{
 	hasilAngka := random[0:angka]
 	outputAngka := strings.Trim(strings.Replace(fmt.Sprint(hasilAngka), " ", "", -1), "[]")
 
-	specialCharacters := "@:;#&-?/%+*"
+	specialCharacters := "@:;#&-?/%+*" // mencari random character
 	special := strings.Split(specialCharacters, "") // [@ : ; # & - ? / % + *]
 	panjang := len(special)
 	getspesial := rand.Intn(panjang)
